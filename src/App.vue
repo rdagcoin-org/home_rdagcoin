@@ -17,12 +17,38 @@
     </div>
     <div class="pages" ref="pages">
       <div class="page">
-        <h2 class="title">start</h2>
-        <p>start</p>
+        <h2 class="title">RDAG</h2>
+        <p>A DAG cryptocurrency implemented using the Monero algorithm</p>
+
+        <div class="btn" style="--clr: #1e9bff; width: 170px">
+          <div>
+            GitHub
+            <el-icon><DArrowRight /></el-icon>
+          </div>
+          <i class="icon"></i>
+        </div>
       </div>
       <div class="page">
-        <h2 class="title">WEB 3D</h2>
-        <p>start</p>
+        <h2 class="title">OUR WALLET</h2>
+
+        <div class="card" style="width: 420px">
+          <div class="cardTitle">Electrum</div>
+          <p>
+            Fast and light wallet. It uses external servers to validate transactions and this makes it unnecessary to download the
+            blockchain.
+          </p>
+          <p>Support: Windows, Linux, MacOS</p>
+
+          <br />
+          <br />
+          <div class="btn" style="--clr: #1e9bff">
+            <div>
+              Download
+              <el-icon><DArrowRight /></el-icon>
+            </div>
+            <i class="icon"></i>
+          </div>
+        </div>
       </div>
       <div class="page">
         <h2 class="title">ThreeJS</h2>
@@ -198,6 +224,9 @@ onMounted(() => {
   margin: 0;
   padding: 0;
 }
+p {
+  margin: 10px 0;
+}
 body {
   background-color: #000;
 }
@@ -328,5 +357,102 @@ body {
 }
 .pages .page p {
   font-size: 25px;
+}
+
+.card {
+  background-color: #0d305286 !important;
+  border: 1px solid #00edef;
+  box-shadow: 0 0 10px rgba($color: #00edef, $alpha: 1);
+  padding: 20px;
+
+  .cardTitle {
+    padding: 0 0 15px 0;
+    font-size: 22px;
+    border-image: linear-gradient(to right, #00edef, transparent) 4;
+    border-bottom: 1px solid;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+}
+
+.btn {
+  position: relative;
+  background: transparent;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5em;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+  padding: 10px 30px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.btn:hover {
+  letter-spacing: 0.25em;
+  color: var(--clr);
+  box-shadow: 0 0 35px var(--clr);
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  background: transparent;
+}
+
+.btn div {
+  position: relative;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.btn i.icon {
+  position: absolute;
+  inset: 0;
+  display: block;
+  opacity: 0.78;
+}
+
+.btn i.icon::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 100%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: #27282c;
+  border: 2px solid var(--clr);
+  transition: 0.5s;
+  opacity: 0;
+}
+
+.btn:hover i.icon::before {
+  left: 0%;
+  transform: translateX(-50%) rotate(45deg);
+  box-shadow: 40px 39px var(--clr);
+  opacity: 1;
+}
+
+.btn i.icon::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: #27282c;
+  border: 2px solid var(--clr);
+  transition: 0.5s;
+  opacity: 0;
+}
+
+.btn:hover i.icon::after {
+  left: 100%;
+  transform: translateX(-50%) rotate(-45deg);
+  box-shadow: 38px -39px var(--clr);
+  opacity: 1;
 }
 </style>
