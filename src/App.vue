@@ -2,14 +2,16 @@
   <div class="home">
     <div class="canvas-container" ref="screenDom"></div>
     <div class="header">
-      <div class="logo"></div>
+      <div class="logoBox">
+        <div class="logo"></div>
+        <div class="name">
+          <div class="h1">RDAG</div>
+          <div class="tips">PWO COIN</div>
+        </div>
+      </div>
       <div class="menu">
         <a href="#" class="menuItem">HOME</a>
-        <a
-          href="#"
-          class="menuItem"
-          >www</a
-        >
+        <a href="#" class="menuItem">www</a>
         <a href="#" class="menuItem">eee</a>
       </div>
     </div>
@@ -31,124 +33,119 @@
 </template>
 
 <script setup>
-import * as THREE from "three";
-import { ref, onMounted } from "vue";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
-import { gsap } from "gsap";
-let screenDom = ref(null);
-let pages = ref(null);
+import * as THREE from 'three'
+import { ref, onMounted } from 'vue'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
+import { gsap } from 'gsap'
+let screenDom = ref(null)
+let pages = ref(null)
 onMounted(() => {
-  let scene = new THREE.Scene();
-  let camera = new THREE.PerspectiveCamera(
-    45,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    100000
-  );
+  let scene = new THREE.Scene()
+  let camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100000)
 
-  camera.position.set(0, 0, 10);
-  let renderer = new THREE.WebGLRenderer({ antialias: true });
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  screenDom.value.appendChild(renderer.domElement);
+  camera.position.set(0, 0, 10)
+  let renderer = new THREE.WebGLRenderer({ antialias: true })
+  renderer.setSize(window.innerWidth, window.innerHeight)
+  screenDom.value.appendChild(renderer.domElement)
 
-  let url = "./assets/25s.jpg";
-  let envTexture = new THREE.TextureLoader().load(url);
-  envTexture.mapping = THREE.EquirectangularReflectionMapping;
-  scene.background = envTexture;
-  scene.environment = envTexture;
+  let url = './assets/25s.jpg'
+  let envTexture = new THREE.TextureLoader().load(url)
+  envTexture.mapping = THREE.EquirectangularReflectionMapping
+  scene.background = envTexture
+  scene.environment = envTexture
 
   function render() {
-    requestAnimationFrame(render);
-    renderer.render(scene, camera);
+    requestAnimationFrame(render)
+    renderer.render(scene, camera)
   }
-  render();
+  render()
 
-  let light = new THREE.DirectionalLight(0xffffff, 1);
-  light.position.set(0, 0, 1);
-  scene.add(light);
-  let light2 = new THREE.DirectionalLight(0xffffff, 0.5);
-  light2.position.set(0, 0, -1);
-  scene.add(light2);
-  let light3 = new THREE.AmbientLight(0xffffff, 0.5);
-  light3.position.set(-1, 1, 1);
-  scene.add(light3);
+  let light = new THREE.DirectionalLight(0xffffff, 1)
+  light.position.set(0, 0, 1)
+  scene.add(light)
+  let light2 = new THREE.DirectionalLight(0xffffff, 0.5)
+  light2.position.set(0, 0, -1)
+  scene.add(light2)
+  let light3 = new THREE.AmbientLight(0xffffff, 0.5)
+  light3.position.set(-1, 1, 1)
+  scene.add(light3)
 
-  let dracoLoader = new DRACOLoader();
-  dracoLoader.setDecoderPath("./draco/gltf/");
-  dracoLoader.setDecoderConfig({ type: "js" });
-  let loader = new GLTFLoader();
-  loader.setDRACOLoader(dracoLoader);
-  loader.load("./model/xz.glb", (gltf) => {
-    gltf.scene.scale.set(0.1, 0.1, 0.1);
-    gltf.scene.position.set(3, 0, 0);
-    scene.add(gltf.scene);
+  let dracoLoader = new DRACOLoader()
+  dracoLoader.setDecoderPath('./draco/gltf/')
+  dracoLoader.setDecoderConfig({ type: 'js' })
+  let loader = new GLTFLoader()
+  loader.setDRACOLoader(dracoLoader)
+  loader.load('./model/xz.glb', (gltf) => {
+    gltf.scene.scale.set(0.1, 0.1, 0.1)
+    gltf.scene.position.set(3, 0, 0)
+    scene.add(gltf.scene)
 
-    window.addEventListener("mousemove", (e) => {
-      let x = (e.clientX / window.innerWidth) * 2 - 1;
-      let y = (e.clientY / window.innerHeight) * 2 - 1;
+    window.addEventListener('mousemove', (e) => {
+      let x = (e.clientX / window.innerWidth) * 2 - 1
+      let y = (e.clientY / window.innerHeight) * 2 - 1
 
-      let timeline = gsap.timeline();
+      let timeline = gsap.timeline()
       timeline.to(gltf.scene.rotation, {
         duration: 0.5,
         x: y,
         y: x,
-        duration: 1,
-      });
-    });
-  });
+        duration: 1
+      })
+    })
+  })
 
-  loader.load("./model/xq6.glb", (gltf) => {
-    gltf.scene.scale.set(0.1, 0.1, 0.1);
-    gltf.scene.position.set(3, -8, 0);
-    scene.add(gltf.scene);
+  loader.load('./model/xq6.glb', (gltf) => {
+    gltf.scene.scale.set(0.1, 0.1, 0.1)
+    gltf.scene.position.set(3, -8, 0)
+    scene.add(gltf.scene)
 
-    window.addEventListener("mousemove", (e) => {
-      let x = (e.clientX / window.innerWidth) * 2 - 1;
-      let y = (e.clientY / window.innerHeight) * 2 - 1;
+    window.addEventListener('mousemove', (e) => {
+      let x = (e.clientX / window.innerWidth) * 2 - 1
+      let y = (e.clientY / window.innerHeight) * 2 - 1
 
-      let timeline = gsap.timeline();
+      let timeline = gsap.timeline()
       timeline.to(gltf.scene.rotation, {
         duration: 0.5,
         x: y,
         y: x,
-        duration: 1,
-      });
-    });
-  });
+        duration: 1
+      })
+    })
+  })
 
-  loader.load("./model/gr75.glb", (gltf) => {
+  loader.load('./model/gr75.glb', (gltf) => {
     // gltf.scene.scale.set(0.1, 0.1, 0.1);
-    gltf.scene.position.set(3, -16, 0);
-    scene.add(gltf.scene);
+    gltf.scene.position.set(3, -16, 0)
+    scene.add(gltf.scene)
 
-    window.addEventListener("mousemove", (e) => {
-      let x = (e.clientX / window.innerWidth) * 2 - 1;
-      let y = (e.clientY / window.innerHeight) * 2 - 1;
+    window.addEventListener('mousemove', (e) => {
+      let x = (e.clientX / window.innerWidth) * 2 - 1
+      let y = (e.clientY / window.innerHeight) * 2 - 1
 
-      let timeline = gsap.timeline();
+      let timeline = gsap.timeline()
       timeline.to(gltf.scene.rotation, {
         duration: 0.5,
         x: y,
         y: x,
-        duration: 1,
-      });
-    });
-  });
+        duration: 1
+      })
+    })
+  })
 
-  let page = 0;
-  let timeline2 = gsap.timeline();
-  window.addEventListener("mousewheel", (e) => {
+  let page = 0
+  let timeline2 = gsap.timeline()
+  window.addEventListener('mousewheel', (e) => {
     if (e.wheelDelta < 0) {
-      page++;
+      page++
       if (page > 2) {
-        page = 2;
+        page = 2
       }
     }
     if (e.wheelDelta > 0) {
-      page--;
+      page--
       if (page < 0) {
-        page = 0;
+        page = 0
       }
     }
     if (!timeline2.isActive()) {
@@ -156,51 +153,47 @@ onMounted(() => {
         duration: 0.5,
 
         y: page * -8,
-        duration: 1,
-      });
+        duration: 1
+      })
       gsap.to(pages.value, {
         duration: 1,
         y: -page * window.innerHeight,
-        duration: 1,
-      });
+        duration: 1
+      })
     }
-  });
+  })
 
-  loader.load("./model/moon.glb", (gltf) => {
-    let moon = gltf.scene.children[0];
+  loader.load('./model/moon.glb', (gltf) => {
+    let moon = gltf.scene.children[0]
     for (let j = 0; j < 10; j++) {
-      let moonInstance = new THREE.InstancedMesh(
-        moon.geometry,
-        moon.material,
-        100
-      );
+      let moonInstance = new THREE.InstancedMesh(moon.geometry, moon.material, 100)
 
       // scene.add(moon);
       for (let i = 0; i < 100; i++) {
-        let x = Math.random() * 1000 - 500;
-        let y = Math.random() * 1000 - 500;
-        let z = Math.random() * 1000 - 500;
+        let x = Math.random() * 1000 - 500
+        let y = Math.random() * 1000 - 500
+        let z = Math.random() * 1000 - 500
 
-        let matrix = new THREE.Matrix4();
-        let size = Math.random() * 20 - 8;
-        matrix.makeScale(size, size, size);
-        matrix.makeTranslation(x, y, z);
-        moonInstance.setMatrixAt(i, matrix);
+        let matrix = new THREE.Matrix4()
+        let size = Math.random() * 20 - 8
+        matrix.makeScale(size, size, size)
+        matrix.makeTranslation(x, y, z)
+        moonInstance.setMatrixAt(i, matrix)
       }
 
       gsap.to(moonInstance.position, {
         duration: Math.random() * 10 + 2,
         z: -1000,
-        ease: "linear",
-        repeat: -1,
-      });
-      scene.add(moonInstance);
+        ease: 'linear',
+        repeat: -1
+      })
+      scene.add(moonInstance)
     }
-  });
-});
+  })
+})
 </script>
 
-<style>
+<style lang="scss">
 * {
   margin: 0;
   padding: 0;
@@ -227,13 +220,30 @@ body {
   justify-content: space-between;
   align-items: center;
 }
-.header .logo {
-  height: 120px;
-  width: 120px;
-  background-image: url("./assets/rdagcoin_logo.png");
-  background-size: 60%;
-  background-position: center;
-  background-repeat: no-repeat;
+.header {
+  .logoBox {
+    display: flex;
+    color: #fff;
+    align-items: center;
+    .logo {
+      height: 120px;
+      width: 120px;
+      background-image: url('./assets/rdagcoin_logo.png');
+      background-size: 60%;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .name {
+      .h1 {
+        font-size: 26px;
+        font-weight: bold;
+      }
+      .tips {
+        font-size: 12px;
+        text-align: center;
+      }
+    }
+  }
 }
 .canvas-container {
   width: 100%;
