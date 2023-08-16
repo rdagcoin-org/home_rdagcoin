@@ -17,10 +17,24 @@
     </div>
     <div class="pages" ref="pages">
       <div class="page">
-        <h2 class="title">RDAG</h2>
-        <p>A DAG cryptocurrency implemented using the Monero algorithm</p>
+        <h2 class="title">RDAG: Safe Cryptocurrency</h2>
+        <p>A DAG cryptocurrency implemented using the RandomX algorithm</p>
+        <br />
+        <div class="card" style="--clr2: #ff0058; --clr1: #03a9f4;">
+          <span></span>
+          <div class="content">
+            <p>Total Supply: 30 million coins</p>
+            <p>Circulating supply: 26 million</p>
+            <p>Block Time: 300 seconds</p>
+            <p>POW Reward: 25 (RDAG)</p>
+            <p>Mining Algorithm: RandomX </p>
+          </div>
+        </div>
+        <br>
+        <span>proof-of-work (PoW) / CPU Mining / Community driven / Anonymous creator / Future-proof</span>
+        <br />
 
-        <div class="btn" style="--clr: #1e9bff; width: 170px">
+        <div class="btn" style="--clr: #00edef; width: 170px">
           <div>
             GitHub
             <el-icon><DArrowRight /></el-icon>
@@ -31,22 +45,22 @@
       <div class="page">
         <h2 class="title">OUR WALLET</h2>
 
-        <div class="card" style="width: 420px">
-          <div class="cardTitle">Electrum</div>
-          <p>
-            Fast and light wallet. It uses external servers to validate transactions and this makes it unnecessary to download the
-            blockchain.
-          </p>
-          <p>Support: Windows, Linux, MacOS</p>
-
-          <br />
-          <br />
-          <div class="btn" style="--clr: #1e9bff">
-            <div>
-              Download
-              <el-icon><DArrowRight /></el-icon>
+        <div class="card" style="--clr2: #00d0ff; --clr1: #4dff03">
+          <span></span>
+          <div class="content">
+            <h2>Electrum</h2>
+            <p>
+              Fast and light wallet. It uses external servers to validate transactions and this makes it unnecessary to download the
+              blockchain.
+            </p>
+            <p>Support: Windows, Linux, MacOS</p>
+            <div class="btn" style="--clr: #4dff03">
+              <div>
+                Download
+                <el-icon><DArrowRight /></el-icon>
+              </div>
+              <i class="icon"></i>
             </div>
-            <i class="icon"></i>
           </div>
         </div>
       </div>
@@ -359,22 +373,6 @@ body {
   font-size: 25px;
 }
 
-.card {
-  background-color: #0d305286 !important;
-  border: 1px solid #00edef;
-  box-shadow: 0 0 10px rgba($color: #00edef, $alpha: 1);
-  padding: 20px;
-
-  .cardTitle {
-    padding: 0 0 15px 0;
-    font-size: 22px;
-    border-image: linear-gradient(to right, #00edef, transparent) 4;
-    border-bottom: 1px solid;
-    margin-bottom: 20px;
-    font-weight: bold;
-  }
-}
-
 .btn {
   position: relative;
   background: transparent;
@@ -455,4 +453,93 @@ body {
   box-shadow: 38px -39px var(--clr);
   opacity: 1;
 }
+
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+  flex-wrap: wrap;
+}
+
+.card {
+  position: relative;
+  width: 360px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(315deg, var(--clr1), var(--clr2));
+    opacity: 0.5;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(315deg, var(--clr1), var(--clr2));
+    filter: blur(30px);
+    opacity: 0.4;
+  }
+
+  span {
+    position: absolute;
+    inset: 6px;
+    background: rgb(0, 0, 0, 0.6);
+    z-index: 2;
+  }
+
+  span::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+  }
+
+  .content {
+    position: relative;
+    z-index: 10;
+    padding: 20px 40px;
+  }
+
+  .content h2 {
+    font: 2em '';
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  .content p {
+    font: 1.1em/1.4em '';
+    color: #fff;
+    margin-bottom: 10px;
+  }
+}
+
+// .card:nth-child(2):after,
+// .card:nth-child(2):before {
+//   background: linear-gradient(315deg, #03a9f4, #ff0058);
+// }
+
+// .container .box:nth-child(3):after,
+// .container .box:nth-child(3):before {
+//   background: linear-gradient(315deg, #4dff03, #00d0ff);
+// }
 </style>
