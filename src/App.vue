@@ -18,18 +18,17 @@
     <div class="pages" ref="pages">
       <div class="page">
         <h2 class="title">RDAG: Safe Cryptocurrency</h2>
-        <p>A DAG cryptocurrency implemented using the RandomX algorithm</p>
+        <p class="contentText">A DAG cryptocurrency implemented using the RandomX algorithm</p>
         <br />
-        <div class="card" style="--clr2: #ff0058; --clr1: #03a9f4">
-          <span></span>
-          <div class="content">
+        <Card :color="['#ff0058', '#03a9f4']">
+          <div class="cardContent">
             <p>Total Supply: 30 million coins</p>
             <p>Circulating supply: 26 million</p>
             <p>Block Time: 300 seconds</p>
             <p>POW Reward: 25 (RDAG)</p>
             <p>Mining Algorithm: RandomX</p>
           </div>
-        </div>
+        </Card>
         <br />
         <span>proof-of-work (PoW) / CPU Mining / Community driven / Anonymous creator / Future-proof</span>
         <br />
@@ -45,10 +44,9 @@
       <div class="page">
         <h2 class="title">OUR WALLET</h2>
 
-        <div class="card" style="--clr2: #00d0ff; --clr1: #4dff03">
-          <span></span>
-          <div class="content">
-            <h2>Electrum</h2>
+        <Card>
+          <div class="cardContent">
+            <div class="cardTitle">Electrum</div>
             <p>
               Fast and light wallet. It uses external servers to validate transactions and this makes it unnecessary to download the
               blockchain.
@@ -62,7 +60,7 @@
               <i class="icon"></i>
             </div>
           </div>
-        </div>
+        </Card>
       </div>
       <div class="page">
         <h2 class="title">ThreeJS</h2>
@@ -78,6 +76,8 @@ import { ref, onMounted } from 'vue'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
 import { gsap } from 'gsap'
+import Card from '@/com/card.vue'
+
 let screenDom = ref(null)
 let pages = ref(null)
 onMounted(() => {
@@ -239,9 +239,7 @@ onMounted(() => {
   margin: 0;
   padding: 0;
 }
-p {
-  margin: 10px 0;
-}
+
 body {
   background-color: #000;
 }
@@ -254,6 +252,7 @@ body {
   height: 100vh;
   transform-origin: 0 0;
 }
+
 .header {
   position: fixed;
   top: 0;
@@ -263,8 +262,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-.header {
+
   .logoBox {
     display: flex;
     color: #fff;
@@ -289,6 +287,7 @@ body {
     }
   }
 }
+
 .canvas-container {
   width: 100%;
   height: 100%;
@@ -329,24 +328,11 @@ body {
   align-items: center;
   font-size: 20px;
   color: #fff;
-}
-.progress > img {
-  padding: 0 15px;
+  > img {
+    padding: 0 15px;
+  }
 }
 
-/* .title {
-  width: 380px;
-  height: 40px;
-  position: fixed;
-  right: 100px;
-  top: 50px;
-  background-color: rgba(0, 0, 0, 0.5);
-  line-height: 40px;
-  text-align: center;
-  color: #fff;
-  border-radius: 5px;
-  z-index: 110;
-} */
 .pages {
   display: flex;
   flex-direction: column;
@@ -370,7 +356,7 @@ body {
   font-weight: 900;
   margin-bottom: 20px;
 }
-.pages .page p {
+.pages .page .contentText {
   font-size: 25px;
 }
 
@@ -464,76 +450,6 @@ body {
   flex-wrap: wrap;
 }
 
-.card {
-  position: relative;
-  width: 360px;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.5s;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(315deg, var(--clr1), var(--clr2));
-    opacity: 0.5;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(315deg, var(--clr1), var(--clr2));
-    filter: blur(30px);
-    opacity: 0.4;
-  }
-
-  span {
-    position: absolute;
-    inset: 6px;
-    background: rgb(0, 0, 0, 0.6);
-    z-index: 2;
-  }
-
-  span::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    pointer-events: none;
-  }
-
-  .content {
-    position: relative;
-    z-index: 10;
-    padding: 20px 40px;
-  }
-
-  .content h2 {
-    font: 2em '';
-    color: #fff;
-    margin-bottom: 10px;
-  }
-
-  .content p {
-    font: 1.1em/1.4em '';
-    color: #fff;
-    margin-bottom: 10px;
-  }
-}
-
 // .card:nth-child(2):after,
 // .card:nth-child(2):before {
 //   background: linear-gradient(315deg, #03a9f4, #ff0058);
@@ -543,4 +459,16 @@ body {
 // .container .box:nth-child(3):before {
 //   background: linear-gradient(315deg, #4dff03, #00d0ff);
 // }
+
+.cardContent {
+  .cardTitle {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  p {
+    font-size: 20px;
+    margin-bottom: 14px;
+  }
+}
 </style>
