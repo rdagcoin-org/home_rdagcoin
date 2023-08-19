@@ -20,21 +20,21 @@
         <h2 class="title">RDAG: Safe Cryptocurrency</h2>
         <p>A DAG cryptocurrency implemented using the RandomX algorithm</p>
         <br />
-        <div class="card" style="--clr2: #ff0058; --clr1: #03a9f4;">
+        <div class="card" style="--clr2: #ff0058; --clr1: #03a9f4">
           <span></span>
           <div class="content">
             <p>Total Supply: 30 million coins</p>
             <p>Circulating supply: 26 million</p>
             <p>Block Time: 300 seconds</p>
             <p>POW Reward: 25 (RDAG)</p>
-            <p>Mining Algorithm: RandomX </p>
+            <p>Mining Algorithm: RandomX</p>
           </div>
         </div>
-        <br>
+        <br />
         <span>proof-of-work (PoW) / CPU Mining / Community driven / Anonymous creator / Future-proof</span>
         <br />
 
-        <div class="btn" style="--clr: #00edef; width: 170px">
+        <div class="btn" style="--clr: #822155; width: 170px">
           <div>
             GitHub
             <el-icon><DArrowRight /></el-icon>
@@ -116,10 +116,11 @@ onMounted(() => {
   dracoLoader.setDecoderConfig({ type: 'js' })
   let loader = new GLTFLoader()
   loader.setDRACOLoader(dracoLoader)
-  loader.load('./model/xz.glb', (gltf) => {
-    gltf.scene.scale.set(0.1, 0.1, 0.1)
+  loader.load('./model/ybb.glb', (gltf) => {
+    gltf.scene.scale.set(1000, 1000, 1000)
     gltf.scene.position.set(3, 0, 0)
-    scene.add(gltf.scene)
+    const model = gltf.scene
+    scene.add(model)
 
     window.addEventListener('mousemove', (e) => {
       let x = (e.clientX / window.innerWidth) * 2 - 1
