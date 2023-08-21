@@ -76,9 +76,154 @@
           </Card>
         </div>
       </div>
-      <div class="page">
+      <div class="page" style="padding-left: 0; margin: 0 auto; align-items: center">
         <h2 class="title">ROADMAP</h2>
-        <p>start</p>
+
+        <div style="display: flex; align-items: center">
+          <el-icon
+            style="font-size: 40px; cursor: pointer; position: relative; top: -10px; margin-right: 20px"
+            @click="changeRoadmapYear(-1)"
+            ><DArrowLeft
+          /></el-icon>
+          <h3 class="title">{{ roadmap_years[roadmap_index] }}</h3>
+          <el-icon style="font-size: 40px; cursor: pointer; position: relative; top: -10px; margin-left: 20px" @click="changeRoadmapYear(1)"
+            ><DArrowRight
+          /></el-icon>
+        </div>
+
+        <transition name="el-zoom-in-center" mode="out-in">
+          <div style="display: flex" v-if="roadmap_index === 0">
+            <Card>
+              <div class="cardContent">
+                <div class="cardTitle">PHASE1</div>
+                <p>
+                  Fast and light wallet. It uses external servers to validate transactions and this makes it unnecessary to download the
+                  blockchain.
+                </p>
+                <p>Support: Windows, Linux, MacOS</p>
+                <div class="btn" style="--clr: #4dff03">
+                  <div>
+                    Download
+                    <el-icon><DArrowRight /></el-icon>
+                  </div>
+                  <i class="icon"></i>
+                </div>
+              </div>
+            </Card>
+
+            <Card style="margin-left: 60px">
+              <div class="cardContent">
+                <div class="cardTitle">PHASE2</div>
+                <p>
+                  The wallet used in the browser allows for convenient payment and receiving without the need to download any software. You
+                  can export the keys and import them into other wallets.
+                </p>
+                <p>Support: Browsers for computers and mobile phones.</p>
+                <p>under development</p>
+              </div>
+            </Card>
+          </div>
+
+          <div style="display: flex" v-else-if="roadmap_index === 1">
+            <Card style="margin-left: 60px">
+              <div class="cardContent">
+                <div class="cardTitle">PHASE3</div>
+                <p>
+                  The wallet used in the browser allows for convenient payment and receiving without the need to download any software. You
+                  can export the keys and import them into other wallets.
+                </p>
+                <p>Support: Browsers for computers and mobile phones.</p>
+                <p>under development</p>
+              </div>
+            </Card>
+
+            <Card style="margin-left: 60px">
+              <div class="cardContent">
+                <div class="cardTitle">PHASE4</div>
+                <p>
+                  The wallet used in the browser allows for convenient payment and receiving without the need to download any software. You
+                  can export the keys and import them into other wallets.
+                </p>
+                <p>Support: Browsers for computers and mobile phones.</p>
+                <p>under development</p>
+              </div>
+            </Card>
+
+            <Card style="margin-left: 60px">
+              <div class="cardContent">
+                <div class="cardTitle">PHASE3</div>
+                <p>
+                  The wallet used in the browser allows for convenient payment and receiving without the need to download any software. You
+                  can export the keys and import them into other wallets.
+                </p>
+                <p>Support: Browsers for computers and mobile phones.</p>
+                <p>under development</p>
+              </div>
+            </Card>
+
+            <Card style="margin-left: 60px">
+              <div class="cardContent">
+                <div class="cardTitle">PHASE4</div>
+                <p>
+                  The wallet used in the browser allows for convenient payment and receiving without the need to download any software. You
+                  can export the keys and import them into other wallets.
+                </p>
+                <p>Support: Browsers for computers and mobile phones.</p>
+                <p>under development</p>
+              </div>
+            </Card>
+          </div>
+
+          <div style="display: flex" v-else-if="roadmap_index === 2">
+            <Card style="margin-left: 60px">
+              <div class="cardContent">
+                <div class="cardTitle">PHASE3</div>
+                <p>
+                  The wallet used in the browser allows for convenient payment and receiving without the need to download any software. You
+                  can export the keys and import them into other wallets.
+                </p>
+                <p>Support: Browsers for computers and mobile phones.</p>
+                <p>under development</p>
+              </div>
+            </Card>
+
+            <Card style="margin-left: 60px">
+              <div class="cardContent">
+                <div class="cardTitle">PHASE4</div>
+                <p>
+                  The wallet used in the browser allows for convenient payment and receiving without the need to download any software. You
+                  can export the keys and import them into other wallets.
+                </p>
+                <p>Support: Browsers for computers and mobile phones.</p>
+                <p>under development</p>
+              </div>
+            </Card>
+
+            <Card style="margin-left: 60px">
+              <div class="cardContent">
+                <div class="cardTitle">PHASE3</div>
+                <p>
+                  The wallet used in the browser allows for convenient payment and receiving without the need to download any software. You
+                  can export the keys and import them into other wallets.
+                </p>
+                <p>Support: Browsers for computers and mobile phones.</p>
+                <p>under development</p>
+              </div>
+            </Card>
+
+            <Card style="margin-left: 60px">
+              <div class="cardContent">
+                <div class="cardTitle">PHASE4</div>
+                <p>
+                  The wallet used in the browser allows for convenient payment and receiving without the need to download any software. You
+                  can export the keys and import them into other wallets.
+                </p>
+                <p>Support: Browsers for computers and mobile phones.</p>
+                <p>under development</p>
+              </div>
+            </Card>
+          </div>
+        </transition>
       </div>
     </div>
   </div>
@@ -169,9 +314,28 @@ onMounted(() => {
     })
   })
 
-  loader.load('./model/gr75.glb', (gltf) => {
-    // gltf.scene.scale.set(0.1, 0.1, 0.1);
+  loader.load('./model/xq6.glb', (gltf) => {
+    gltf.scene.scale.set(0.1, 0.1, 0.1);
     gltf.scene.position.set(3, -16, 0)
+    scene.add(gltf.scene)
+
+    window.addEventListener('mousemove', (e) => {
+      let x = (e.clientX / window.innerWidth) * 2 - 1
+      let y = (e.clientY / window.innerHeight) * 2 - 1
+
+      let timeline = gsap.timeline()
+      timeline.to(gltf.scene.rotation, {
+        duration: 0.5,
+        x: y,
+        y: x,
+        duration: 1
+      })
+    })
+  })
+
+  loader.load('./model/xz.glb', (gltf) => {
+    gltf.scene.scale.set(0.1, 0.1, 0.1);
+    gltf.scene.position.set(3, -24, 0)
     scene.add(gltf.scene)
 
     window.addEventListener('mousemove', (e) => {
@@ -193,8 +357,8 @@ onMounted(() => {
   window.addEventListener('mousewheel', (e) => {
     if (e.wheelDelta < 0) {
       page++
-      if (page > 2) {
-        page = 2
+      if (page > 3) {
+        page = 3
       }
     }
     if (e.wheelDelta > 0) {
@@ -246,6 +410,15 @@ onMounted(() => {
     }
   })
 })
+
+const roadmap_index = ref(0)
+const roadmap_years = [2023, 2024, 2025]
+const changeRoadmapYear = (index) => {
+  if (roadmap_index.value === 0 && index < 0) return
+  if (roadmap_index.value === 2 && index > 0) return
+  roadmap_index.value += index
+
+}
 </script>
 
 <style lang="scss">
