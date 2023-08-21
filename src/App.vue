@@ -116,8 +116,8 @@ onMounted(() => {
   dracoLoader.setDecoderConfig({ type: 'js' })
   let loader = new GLTFLoader()
   loader.setDRACOLoader(dracoLoader)
-  loader.load('./model/ybb.glb', (gltf) => {
-    gltf.scene.scale.set(1000, 1000, 1000)
+  loader.load('./model/ybbb2.glb', (gltf) => {
+    gltf.scene.scale.set(80, 80, 80)
     gltf.scene.position.set(3, 0, 0)
     const model = gltf.scene
     scene.add(model)
@@ -136,8 +136,8 @@ onMounted(() => {
     })
   })
 
-  loader.load('./model/xq6.glb', (gltf) => {
-    gltf.scene.scale.set(0.1, 0.1, 0.1)
+  loader.load('./model/22.glb', (gltf) => {
+    gltf.scene.scale.set(50, 50, 50)
     gltf.scene.position.set(3, -8, 0)
     scene.add(gltf.scene)
 
