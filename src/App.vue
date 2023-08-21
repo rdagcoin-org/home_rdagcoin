@@ -44,26 +44,40 @@
       <div class="page">
         <h2 class="title">OUR WALLET</h2>
 
-        <Card>
-          <div class="cardContent">
-            <div class="cardTitle">Electrum</div>
-            <p>
-              Fast and light wallet. It uses external servers to validate transactions and this makes it unnecessary to download the
-              blockchain.
-            </p>
-            <p>Support: Windows, Linux, MacOS</p>
-            <div class="btn" style="--clr: #4dff03">
-              <div>
-                Download
-                <el-icon><DArrowRight /></el-icon>
+        <div style="display: flex">
+          <Card>
+            <div class="cardContent">
+              <div class="cardTitle">Electrum</div>
+              <p>
+                Fast and light wallet. It uses external servers to validate transactions and this makes it unnecessary to download the
+                blockchain.
+              </p>
+              <p>Support: Windows, Linux, MacOS</p>
+              <div class="btn" style="--clr: #4dff03">
+                <div>
+                  Download
+                  <el-icon><DArrowRight /></el-icon>
+                </div>
+                <i class="icon"></i>
               </div>
-              <i class="icon"></i>
             </div>
-          </div>
-        </Card>
+          </Card>
+
+          <Card style="margin-left: 60px">
+            <div class="cardContent">
+              <div class="cardTitle">Web</div>
+              <p>
+                The wallet used in the browser allows for convenient payment and receiving without the need to download any software. You
+                can export the keys and import them into other wallets.
+              </p>
+              <p>Support: Browsers for computers and mobile phones.</p>
+              <p>under development</p>
+            </div>
+          </Card>
+        </div>
       </div>
       <div class="page">
-        <h2 class="title">ThreeJS</h2>
+        <h2 class="title">ROADMAP</h2>
         <p>start</p>
       </div>
     </div>
